@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: item-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mall?serverTimezone=GMT%2B8&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+server:
+  port: 7002
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/

@@ -11,6 +11,7 @@
     <modules>
         <module>mall_common</module>
         <module>mall_eureka</module>
+        <module>mall_item</module>
     </modules>
 
     <!--版本控制-->
@@ -22,7 +23,7 @@
         <spring.boot.web.version>2.1.3.RELEASE</spring.boot.web.version>
         <spring.boot.test.version>2.1.3.RELEASE</spring.boot.test.version>
         <lombok.version>1.18.6</lombok.version>
-        <mysql.version>5.1.32</mysql.version>
+        <mysql.version>8.0.13</mysql.version>
         <mybatis.plus.boot.starter.version>3.1.0</mybatis.plus.boot.starter.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     </properties>
