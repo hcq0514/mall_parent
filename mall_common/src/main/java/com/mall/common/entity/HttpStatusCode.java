@@ -22,13 +22,18 @@ public class HttpStatusCode {
      */
     public static final int DELETE_SUCCESS = HttpURLConnection.HTTP_NO_CONTENT;
     /**
+     *  401
+     *  未授权的，可用于权限控制
+     */
+    public static final int UNAUTHORIZED = HttpURLConnection.HTTP_UNAUTHORIZED;
+    /**
      * 500
      * 服务器错误。没法明确定义的服务器错误都可以返回这个。
      */
     public static final int INTERNAL_ERROR = HttpURLConnection.HTTP_INTERNAL_ERROR;
 
-    public static final int LOGINERROR = 20002;//用户名或密码错误
-    public static final int ACCESSERROR = 20003;//权限不足
-    public static final int REMOTEERROR = 20004;//远程调用失败
-    public static final int REPERROR = 20005;//重复操作
+//    public static final int LOGINERROR = 20002;//用户名或密码错误
+//    public static final int ACCESSERROR = 20003;//权限不足
+//    public static final int REMOTEERROR = 20004;//远程调用失败
+//    public static final int REPERROR = 20005;//重复操作
 }

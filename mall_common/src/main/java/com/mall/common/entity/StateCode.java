@@ -1,7 +1,5 @@
 package com.mall.common.entity;
 
-import java.net.HttpURLConnection;
-
 /**
  * 状态实体类
  */
