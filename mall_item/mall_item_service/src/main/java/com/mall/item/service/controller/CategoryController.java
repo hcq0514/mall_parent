@@ -2,7 +2,6 @@ package com.mall.item.service.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.mall.common.entity.HttpStatusCode;
 import com.mall.common.entity.Result;
 import com.mall.item.entity.CategoryEntity;
 import com.mall.item.service.service.CategoryService;
@@ -30,6 +29,6 @@ public class CategoryController {
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setParentId(pid);
         List list = categoryService.list(new QueryWrapper(categoryEntity));
-        return new Result(true, HttpStatusCode.OK, "查询成功", list);
+        return Result.ok(list);
     }
 }

@@ -8,7 +8,7 @@ spring:
         #lb代表从注册中心获取服务
         uri: lb://ITEM-SERVICE
         predicates:
-        - Path=/item/api/**
+        - Path=/api/item/**
         # 去掉/item/api前缀
         filters:
         - StripPrefix=2

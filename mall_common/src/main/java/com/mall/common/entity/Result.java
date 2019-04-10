@@ -9,7 +9,7 @@ public class Result {
      */
     private boolean flag;
     /**
-     *  返回码
+     * 返回码
      */
     private Integer code;
     /**
@@ -17,7 +17,7 @@ public class Result {
      */
     private String message;
     /**
-     *  返回数据
+     * 返回数据
      */
     private Object data;
 
@@ -37,6 +37,14 @@ public class Result {
         this.flag = flag;
         this.code = code;
         this.message = message;
+    }
+
+    public static Result ok(Object data) {
+        return new Result(true,HttpStatusCode.OK,"请求成功",data);
+    }
+
+    public static Result error(Object data) {
+        return new Result(true,HttpStatusCode.INTERNAL_ERROR,"请求失败",data);
     }
 
 }
