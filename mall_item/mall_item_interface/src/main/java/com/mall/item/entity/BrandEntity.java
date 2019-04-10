@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-import static com.baomidou.mybatisplus.annotation.IdType.ID_WORKER_STR;
+import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 
 /**
  *
@@ -22,7 +22,7 @@ public class BrandEntity implements Serializable {
     /**
      * 品牌名称
      */
-    @TableId(type = ID_WORKER_STR)
+    @TableId(type = AUTO)
     private Long id;
 
     /**

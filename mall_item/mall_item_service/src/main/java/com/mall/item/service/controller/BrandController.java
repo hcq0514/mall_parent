@@ -6,11 +6,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mall.item.entity.BrandEntity;
 import com.mall.item.service.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author hcq
@@ -32,5 +32,11 @@ public class BrandController {
             @RequestParam(value = "key", required = false) String key) {
         IPage<BrandEntity> page1 = brandService.page(new Page<>(page, rows));
         return ResponseEntity.ok(page1);
+    }
+
+    @PostMapping("save")
+    public ResponseEntity saveBrand(BrandEntity brand, @RequestParam("cids") List<Long> cids) {
+        brandService.saveBrandAndCategoriesId(brand, cids);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-import static com.baomidou.mybatisplus.annotation.IdType.ID_WORKER_STR;
+import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 
 /**
  * <p>
@@ -25,7 +25,7 @@ public class CategoryEntity implements Serializable {
     /**
      * 父类目id,顶级类目填0
      */
-    @TableId(type = ID_WORKER_STR)
+    @TableId(type = AUTO)
     private Long id;
 
     /**
