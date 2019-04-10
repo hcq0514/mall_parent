@@ -12,6 +12,7 @@
         <module>mall_common</module>
         <module>mall_eureka</module>
         <module>mall_item</module>
+        <module>mall_gateway</module>
     </modules>
 
     <!--版本控制-->

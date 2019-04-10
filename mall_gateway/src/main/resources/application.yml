@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: item-service
+        #lb代表从注册中心获取服务
+        uri: lb://ITEM-SERVICE
+        predicates:
+        - Path=/item/api/**
+        # 去掉/item/api前缀
+        filters:
+        - StripPrefix=2
+server:
+  port: 7005
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+
+
