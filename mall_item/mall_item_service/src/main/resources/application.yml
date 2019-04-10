@@ -7,8 +7,8 @@ spring:
     username: root
     password: root
 server:
-  port: 7002
+  port: 7010
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://localhost:7000/eureka/
