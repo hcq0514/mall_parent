@@ -1,8 +1,10 @@
 package com.mall.item.service;
 
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
@@ -14,5 +16,9 @@ public class ItemServiceApplication {
     }
 
 
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
+    }
 
 }
