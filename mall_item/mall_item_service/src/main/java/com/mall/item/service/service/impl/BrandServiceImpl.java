@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- *
  * @author hcq
  * @since 2019-04-09
  */
@@ -23,8 +22,8 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandEntity> impl
     @Override
     public void saveBrandAndCategoriesId(BrandEntity brand, List<Long> cids) {
         brandMapper.insert(brand);
-        for (long cid :cids){
-            brandMapper.insertBrandAndCategoryId(brand.getId(),cid);
+        for (long cid : cids) {
+            brandMapper.insertCategoryIdAndBrandId(cid, brand.getId());
         }
     }
 }
