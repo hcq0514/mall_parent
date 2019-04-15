@@ -1,10 +1,13 @@
 package com.mall.item.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 
 /**
  * <p>
@@ -20,6 +23,7 @@ public class SpuEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(type = AUTO)
     private Long id;
     /**
      * 标题

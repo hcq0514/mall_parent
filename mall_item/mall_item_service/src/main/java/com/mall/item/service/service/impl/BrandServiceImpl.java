@@ -26,4 +26,9 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandEntity> impl
             brandMapper.insertCategoryIdAndBrandId(cid, brand.getId());
         }
     }
+
+    @Override
+    public List<BrandEntity> queryBrandByCategoryId(long cid) {
+        return brandMapper.selectBrandByCategoryId(cid);
+    }
 }

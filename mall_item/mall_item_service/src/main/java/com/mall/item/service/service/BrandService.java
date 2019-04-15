@@ -15,4 +15,6 @@ import java.util.List;
 public interface BrandService extends IService<BrandEntity> {
 
     void saveBrandAndCategoriesId(BrandEntity brand, List<Long> cids);
+
+    List<BrandEntity> queryBrandByCategoryId(long cid);
 }

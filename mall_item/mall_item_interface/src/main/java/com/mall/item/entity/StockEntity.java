@@ -5,17 +5,19 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 
 /**
  *
  * @author hcq
- * @since 2019-04-10
+ * @since 2019-04-15
  */
 @Data
-@TableName("mall_brand")
-public class BrandEntity implements Serializable {
+@TableName("mall_stock")
+public class StockEntity implements Serializable {
+
 
     private static final long serialVersionUID = 1L;
 
@@ -23,19 +25,23 @@ public class BrandEntity implements Serializable {
     private Long id;
 
     /**
-     * 品牌名称
+     * 库存对应的商品sku id
      */
-    private String name;
+    private Long skuId;
 
     /**
-     * 品牌图片地址
+     * 可秒杀库存
      */
-    private String image;
+    private Integer seckillStock;
 
     /**
-     * 品牌的首字母
+     * 秒杀总数量
      */
-    private String letter;
+    private Integer seckillTotal;
 
+    /**
+     * 库存数量
+     */
+    private Integer stock;
 
 }

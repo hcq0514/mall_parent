@@ -3,14 +3,12 @@ package com.mall.item.service.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mall.item.entity.SpuBo;
+import com.mall.item.entity.bo.SpuBo;
 import com.mall.item.service.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author hcq
@@ -33,6 +31,23 @@ public class GoodsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(result);
+    }
+
+    /**
+     * 新增商品
+     * @param spuBo
+     * @return
+     */
+    @PostMapping
+    public ResponseEntity<Void> saveGoods(@RequestBody SpuBo spuBo) {
+        //todo skus多选时会存在转换问题。
+        try {
+            goodsService.save(spuBo);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

@@ -39,4 +39,13 @@ public class BrandController {
         brandService.saveBrandAndCategoriesId(brand, cids);
         return new ResponseEntity(HttpStatus.CREATED);
     }
+
+    @GetMapping("cid/{cid}")
+    public ResponseEntity queryBrandByCategoryId(@PathVariable("cid") long cid) {
+        List<BrandEntity> brandEntities = brandService.queryBrandByCategoryId(cid);
+        if (brandEntities == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(brandEntities);
+    }
 }
