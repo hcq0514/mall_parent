@@ -98,4 +98,9 @@ public class GoodsServiceImpl implements GoodsService {
             this.stockMapper.insert(stock);
         }
     }
+
+    @Override
+    public SpuDetailEntity querySpuDetailBySpuId(long spu_id) {
+        return spuDetailMapper.selectSpuDetailBySpuId(spu_id);
+    }
 }

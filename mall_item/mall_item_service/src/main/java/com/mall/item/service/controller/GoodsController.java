@@ -3,6 +3,7 @@ package com.mall.item.service.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mall.item.entity.SpuDetailEntity;
 import com.mall.item.entity.bo.SpuBo;
 import com.mall.item.service.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.*;
  * @since 2019-04-09
  */
 @RestController
+@RequestMapping("goods")
 public class GoodsController {
 
     @Autowired
     GoodsService goodsService;
+
 
     @GetMapping("/spu/page")
     public ResponseEntity<IPage<SpuBo>> querySpuByPage(
@@ -26,7 +29,7 @@ public class GoodsController {
             @RequestParam(value = "rows", defaultValue = "5") Integer rows,
             @RequestParam(value = "key", required = false) String key) {
 
-        IPage<SpuBo> result = goodsService.querySpuByPageAndSort(new Page(page, rows),  key);
+        IPage<SpuBo> result = goodsService.querySpuByPageAndSort(new Page(page, rows), key);
         if (result == null || result.getRecords().size() == 0) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -35,6 +38,7 @@ public class GoodsController {
 
     /**
      * 新增商品
+     *
      * @param spuBo
      * @return
      */
@@ -49,5 +53,15 @@ public class GoodsController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("spu/detail/{spuDeailId}")
+    public ResponseEntity<SpuDetailEntity> querySpuDetailById(@PathVariable long spuDeailId) {
+        SpuDetailEntity spuDetailEntity = goodsService.querySpuDetailBySpuId(spuDeailId);
+        if (spuDetailEntity == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(spuDetailEntity);
+    }
+
 
 }

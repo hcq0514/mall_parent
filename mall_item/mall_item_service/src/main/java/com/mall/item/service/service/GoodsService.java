@@ -1,6 +1,7 @@
 package com.mall.item.service.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.mall.item.entity.SpuDetailEntity;
 import com.mall.item.entity.bo.SpuBo;
 
 /**
@@ -24,4 +25,6 @@ public interface GoodsService {
      * @param spu
      */
     void save(SpuBo spu);
+
+    SpuDetailEntity querySpuDetailBySpuId(long id);
 }

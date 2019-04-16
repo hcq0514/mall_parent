@@ -13,6 +13,7 @@
         <module>mall_eureka</module>
         <module>mall_item</module>
         <module>mall_gateway</module>
+        <module>mall_user</module>
     </modules>
 
     <!--版本控制-->
