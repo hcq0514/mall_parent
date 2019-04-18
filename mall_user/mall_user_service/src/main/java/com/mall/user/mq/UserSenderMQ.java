@@ -23,9 +23,9 @@ public class UserSenderMQ {
         map.put("phone", phone);
         map.put("code", code);
         try {
-            rabbitTemplate.convertAndSend(RabbitMQCode.USER_EXCHANGE, RabbitMQCode.USER_VERIFICATION_CODE_QUEUE, map);
+            rabbitTemplate.convertAndSend(RabbitMQCode.USER_EXCHANGE, RabbitMQCode.USER_VERIFICATION_CODE_ROUTING_KEY, map);
         } catch (Exception e) {
-            logger.error("发送验证码发生错误，错误信息为:" + e.getMessage(), e);
+            logger.error("发送验证码MQ请求发生错误，错误信息为:" + e.getMessage(), e);
         }
     }
 

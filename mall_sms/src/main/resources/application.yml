@@ -22,6 +22,5 @@ sms:
   aliyun:
     accessKeyId: LTAIPylXSyjSzvHF # 你自己的accessKeyId
     accessKeySecret: dl0fLVNu3D31x4sFkzgpML6LMX8AYc # 你自己的AccessKeySecret
-    signName: 楚秦 # 签名名称
     regionId: cn-hangzhou
     domain: dysmsapi.aliyuncs.com
