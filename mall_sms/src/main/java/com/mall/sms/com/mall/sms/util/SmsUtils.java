@@ -1,4 +1,4 @@
-package com.mall.sms.com.mall.sms;
+package com.mall.sms.com.mall.sms.util;
 
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
@@ -7,6 +7,8 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -14,19 +16,23 @@ import org.springframework.stereotype.Component;
 public class SmsUtils {
 
     @Value("sms.aliyun.regionId")
-    private String regionId;
+    private static String regionId;
 
     @Value("sms.aliyun.accessKeyId")
-    private String accessKeyId;
+    private static String accessKeyId;
 
     @Value("sms.aliyun.accessKeySecret")
-    private String accessKeySecret;
+    private static String accessKeySecret;
 
     @Value("sms.aliyun.domain")
-    private String domain;
+    private static String domain;
+
+    @Autowired
+    RabbitTemplate rabbitTemplate;
 
 
-    public void sendSms(String phone, String signName, String templateCode, String templateParam) {
+    public static void sendSms(String phone, String signName, String templateCode, String templateParam) {
+        //todo
 
         DefaultProfile profile = DefaultProfile.getProfile(regionId, accessKeyId, accessKeySecret);
         IAcsClient client = new DefaultAcsClient(profile);

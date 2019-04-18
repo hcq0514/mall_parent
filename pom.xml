@@ -29,6 +29,7 @@
         <mysql.version>8.0.13</mysql.version>
         <mybatis.plus.boot.starter.version>3.1.0</mybatis.plus.boot.starter.version>
         <spring.cloud.version>Greenwich.SR1</spring.cloud.version>
+        <fastjson.version>1.2.56</fastjson.version>
     </properties>
 
     <dependencyManagement>
@@ -81,6 +82,16 @@
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-ecs</artifactId>
                 <version>4.11.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
         </dependencies>
 

@@ -33,6 +33,12 @@ public class UserController {
         }
         return ResponseEntity.ok(user);
     }
+    @GetMapping("sendVerifyCode")
+    public ResponseEntity<UserEntity> sendVerifyCode() {
+        userService.sendVerifyCode();
+        return null;
+    }
+
 }
 
 

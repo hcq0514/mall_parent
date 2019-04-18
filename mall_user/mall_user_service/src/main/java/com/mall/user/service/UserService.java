@@ -11,4 +11,7 @@ import com.mall.user.entity.UserEntity;
 public interface UserService extends IService<UserEntity> {
 
     UserEntity queryUser(String username, String password);
+
+    void sendVerifyCode();
+
 }

@@ -21,6 +21,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     @Autowired
     BCryptPasswordEncoder encoder;
 
+    @Autowired
+
+
     @Override
     public UserEntity queryUser(String username, String password) {
         UserEntity userEntity = userMapper.selectByName(username);
@@ -28,6 +31,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
             return userEntity;
         }
         return null;
+    }
+
+    @Override
+    public void sendVerifyCode() {
+
     }
 
 }
