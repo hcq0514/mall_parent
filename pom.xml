@@ -15,6 +15,7 @@
         <module>mall_gateway</module>
         <module>mall_user</module>
         <module>mall_sms</module>
+        <module>mall_search</module>
     </modules>
 
     <!--版本控制-->
@@ -42,6 +43,12 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
             <dependency>
@@ -109,6 +116,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
