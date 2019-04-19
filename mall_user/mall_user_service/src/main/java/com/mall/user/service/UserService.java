@@ -14,4 +14,5 @@ public interface UserService extends IService<UserEntity> {
 
     void sendVerifyCode(String phone);
 
+    Boolean register(UserEntity user, String code);
 }

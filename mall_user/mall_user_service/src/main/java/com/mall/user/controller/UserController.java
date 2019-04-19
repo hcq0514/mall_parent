@@ -5,10 +5,9 @@ import com.mall.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("user")
@@ -35,10 +34,31 @@ public class UserController {
         }
         return ResponseEntity.ok(user);
     }
+
+    @PostMapping("login")
+    public ResponseEntity<UserEntity> tempLogin() {
+        return ResponseEntity.ok(new UserEntity());
+    }
+
     @GetMapping("sendVerifyCode")
     public ResponseEntity<UserEntity> sendVerifyCode() {
         userService.sendVerifyCode("13113051027");
         return null;
+    }
+
+    /**
+     * 注册
+     * @param user
+     * @param code
+     * @return
+     */
+    @PostMapping("register")
+    public ResponseEntity<Void> register(@Valid UserEntity user, @RequestParam("code") String code) {
+        Boolean boo = userService.register(user, code);
+        if (boo == null || !boo) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

@@ -9,9 +9,16 @@ spring:
         uri: lb://ITEM-SERVICE
         predicates:
         - Path=/api/item/**
-        # 去掉/item/api前缀
+        # 去掉/api/item/前缀
         filters:
         - StripPrefix=2
+      - id: user-service
+        uri: lb://USER-SERVICE
+        predicates:
+        - Path=/api/user/**
+        # 去掉/api前缀
+        filters:
+        - StripPrefix=1
 server:
   port: 7001
 eureka:

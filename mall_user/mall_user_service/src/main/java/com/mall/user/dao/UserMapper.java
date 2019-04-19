@@ -13,7 +13,4 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper extends BaseMapper<UserEntity> {
 
-
-    @Select("select * from mall_user where username =#{username}")
-    UserEntity selectByName(String username);
 }
