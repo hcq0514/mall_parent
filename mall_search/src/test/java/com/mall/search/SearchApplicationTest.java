@@ -23,7 +23,10 @@ public class SearchApplicationTest {
     public void createIndex(){
 
         // 创建索引
-//        elasticsearchTemplate.delete("item");
         elasticsearchTemplate.createIndex(Item.class);
+        //写索引字段
+        elasticsearchTemplate.putMapping(Item.class);
+        //删索引
+        elasticsearchTemplate.deleteIndex("item");
     }
 }
