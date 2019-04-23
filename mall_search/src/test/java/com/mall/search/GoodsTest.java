@@ -45,7 +45,7 @@ public class GoodsTest {
         // 配置映射
         this.elasticsearchTemplate.putMapping(Goods.class);
         int page = 1;
-        int rows = 100;
+        int rows = 10;
         int size = 0;
         do {
             // 查询分页数据

@@ -1,8 +1,11 @@
 package com.mall.item.service.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.mall.item.entity.SkuEntity;
 import com.mall.item.entity.SpuDetailEntity;
 import com.mall.item.entity.bo.SpuBo;
+
+import java.util.List;
 
 /**
  *
@@ -27,4 +30,6 @@ public interface GoodsService {
     void save(SpuBo spu);
 
     SpuDetailEntity querySpuDetailBySpuId(long id);
+
+    List<SkuEntity> querySkuBySpuId(long spuId);
 }

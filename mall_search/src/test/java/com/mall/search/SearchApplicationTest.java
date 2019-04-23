@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Map;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SearchApplication.class)
 public class SearchApplicationTest {
@@ -20,7 +22,7 @@ public class SearchApplicationTest {
     private ElasticsearchTemplate elasticsearchTemplate;
 
     @Test
-    public void createIndex(){
+    public void createIndex() {
 
         // 创建索引
         elasticsearchTemplate.createIndex(Item.class);
@@ -28,5 +30,13 @@ public class SearchApplicationTest {
         elasticsearchTemplate.putMapping(Item.class);
         //删索引
 //        elasticsearchTemplate.deleteIndex("item");
+    }
+
+    @Test
+    public void getIndex() {
+        Map mapping = elasticsearchTemplate.getMapping(Goods.class);
+        System.out.println(mapping);
+        Iterable<Goods> all = goodsRepository.findAll();
+        all.forEach(x -> System.out.println(x.getAll()));
     }
 }

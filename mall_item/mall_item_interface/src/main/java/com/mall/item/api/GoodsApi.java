@@ -23,11 +23,10 @@ public interface GoodsApi {
 
     /**
      * 根据spu商品id查询详情
-     * @param id
      * @return
      */
-    @GetMapping("/spu/detail/{id}")
-    SpuDetailEntity querySpuDetailBySpuId(@PathVariable("id") Long id);
+    @GetMapping("/spu/detail/{spuDeailId}")
+    SpuDetailEntity querySpuDetailBySpuId(@PathVariable("spuDeailId") Long spuDeailId);
 
     /**
      * 根据spu的id查询sku

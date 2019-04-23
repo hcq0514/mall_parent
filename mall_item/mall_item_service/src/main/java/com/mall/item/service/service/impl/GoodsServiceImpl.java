@@ -1,5 +1,6 @@
 package com.mall.item.service.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.mall.item.entity.*;
 import com.mall.item.entity.bo.SpuBo;
@@ -102,5 +103,12 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public SpuDetailEntity querySpuDetailBySpuId(long spu_id) {
         return spuDetailMapper.selectSpuDetailBySpuId(spu_id);
+    }
+
+    @Override
+    public List<SkuEntity> querySkuBySpuId(long spuId) {
+        SkuEntity skuEntity = new SkuEntity();
+        skuEntity.setSpuId(spuId);
+        return skuMapper.selectList(new QueryWrapper(skuEntity));
     }
 }

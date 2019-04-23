@@ -1,5 +1,6 @@
 package com.mall.search.document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -48,6 +49,7 @@ public class Goods {
     /**
      *  创建时间
      */
+    @JsonIgnore
     private LocalDateTime createTime;
     /**
      *  价格
