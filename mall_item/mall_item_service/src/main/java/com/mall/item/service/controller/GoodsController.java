@@ -55,7 +55,7 @@ public class GoodsController {
     }
 
     @GetMapping("spu/detail/{spuDeailId}")
-    public ResponseEntity<SpuDetailEntity> querySpuDetailById(@PathVariable long spuDeailId) {
+    public ResponseEntity<SpuDetailEntity> querySpuDetailBySpuId(@PathVariable long spuDeailId) {
         SpuDetailEntity spuDetailEntity = goodsService.querySpuDetailBySpuId(spuDeailId);
         if (spuDetailEntity == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

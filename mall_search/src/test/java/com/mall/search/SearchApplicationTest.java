@@ -27,6 +27,6 @@ public class SearchApplicationTest {
         //写索引字段
         elasticsearchTemplate.putMapping(Item.class);
         //删索引
-        elasticsearchTemplate.deleteIndex("item");
+//        elasticsearchTemplate.deleteIndex("item");
     }
 }
