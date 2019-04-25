@@ -5,6 +5,7 @@ import com.mall.item.entity.bo.SpuBo;
 import com.mall.search.client.GoodsClient;
 import com.mall.search.document.Goods;
 import com.mall.search.repository.GoodsRepository;
+import com.mall.search.service.SearchService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

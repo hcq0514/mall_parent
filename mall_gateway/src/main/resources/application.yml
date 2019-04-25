@@ -19,6 +19,13 @@ spring:
         # 去掉/api前缀
         filters:
         - StripPrefix=1
+      - id: search-service
+        uri: lb://SEARCH-SERVICE
+        predicates:
+        - Path=/api/search/**
+          # 去掉/api前缀
+        filters:
+        - StripPrefix=1
 server:
   port: 7001
 eureka:
