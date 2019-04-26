@@ -3,6 +3,7 @@ package com.mall.item.api;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mall.item.entity.SkuEntity;
 import com.mall.item.entity.SpuDetailEntity;
+import com.mall.item.entity.SpuEntity;
 import com.mall.item.entity.bo.SpuBo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public interface GoodsApi {
      * @return
      */
     @GetMapping("/spu/detail/{spuDeailId}")
-    SpuDetailEntity querySpuDetailBySpuId(@PathVariable("spuDeailId") Long spuDeailId);
+    ResponseEntity<SpuDetailEntity> querySpuDetailBySpuId(@PathVariable("spuDeailId") Long spuDeailId);
 
     /**
      * 根据spu的id查询sku
@@ -35,4 +36,12 @@ public interface GoodsApi {
      */
     @GetMapping("sku/list")
     List<SkuEntity> querySkuBySpuId(@RequestParam("id") Long id);
+
+    /**
+     * 根据spu的id查询spu
+     * @param id
+     * @return
+     */
+    @GetMapping("spu/{id}")
+    ResponseEntity<SpuEntity> querySpuById(@PathVariable("id") Long id);
 }

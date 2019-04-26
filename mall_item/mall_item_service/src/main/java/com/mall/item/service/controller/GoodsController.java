@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mall.item.entity.SkuEntity;
 import com.mall.item.entity.SpuDetailEntity;
+import com.mall.item.entity.SpuEntity;
 import com.mall.item.entity.bo.SpuBo;
 import com.mall.item.service.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class GoodsController {
     }
 
     @GetMapping("spu/detail/{spuDeailId}")
-    public ResponseEntity<SpuDetailEntity> querySpuDetailBySpuId(@PathVariable long spuDeailId) {
+    public ResponseEntity<SpuDetailEntity>querySpuDetailBySpuId (@PathVariable long spuDeailId) {
         SpuDetailEntity spuDetailEntity = goodsService.querySpuDetailBySpuId(spuDeailId);
         if (spuDetailEntity == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -76,5 +77,13 @@ public class GoodsController {
         return goodsService.querySkuBySpuId(spuId);
     };
 
+    @GetMapping("spu/{id}")
+    public ResponseEntity<SpuEntity> querySpuById(@PathVariable("id") Long id){
+        SpuEntity spu = goodsService.querySpuById(id);
+        if(spu == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(spu);
+    }
 
 }

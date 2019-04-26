@@ -1,8 +1,15 @@
 spring:
   application:
     name: goods-web-service
+  datasource:
+    url: jdbc:mysql://47.100.97.46:3306/mall?serverTimezone=GMT%2B8&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  main:
+    allow-bean-definition-overriding: true
 server:
-  port: 7101
+  port: 7102
 eureka:
   client:
     service-url:
