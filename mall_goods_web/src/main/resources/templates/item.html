@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 
 <head>
@@ -101,18 +102,18 @@
 			<div class="crumb-wrap">
 				<ul class="sui-breadcrumb">
 					<li>
-						<a href="#">手机</a>
+						<a href="#" th:text="${spu.cid1}"></a>
 					</li>
 					<li>
-						<a href="#">手机通讯</a>
+						<a href="#" th:text="${spu.cid2}"></a>
 					</li>
 					<li>
-						<a href="#">手机</a>
+						<a href="#"th:text="${spu.cid3}"></a>
 					</li>
 					<li>
-						<a href="#">Apple</a>
+						<a href="#" th:text="${brand.name}">Apple</a>
 					</li>
-					<li class="active">Apple iPhone 6s</li>
+					<li class="active" th:text="${spu.title}">Apple iPhone 6s</li>
 				</ul>
 			</div>
 			<!--product-info-->
@@ -149,7 +150,7 @@
 				</div>
 				<div class="fr itemInfo-wrap">
 					<div class="sku-name">
-						<h4>Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机</h4>
+						<h4 th:utext="${spu.title}"></h4>
 					</div>
 					<div class="news"><span>推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</span></div>
 					<div class="summary">
@@ -446,6 +447,7 @@
 							<li class="active">
 								<a href="#one" data-toggle="tab">
 									<span>商品介绍</span>
+									
 								</a>
 							</li>
 							<li>
@@ -489,18 +491,14 @@
 									<li>机身内存：64GB</li>
 								</ul>
 								<!--商品详情-->
-								<div class="intro-detail">
-									<img src="/img/_/intro01.png" />
-									<img src="/img/_/intro02.png" />
-									<img src="/img/_/intro03.png" />
-								</div>
+								<div class="intro-detail"  th:utext="${spuDetail.description}">
 							</div>
 							<div id="two" class="tab-pane">
 								<div class="Ptable">
     <div class="Ptable-item">
         <h3>主体</h3>
         <dl>
-            <dt>品牌</dt><dd>华为（HUAWEI）</dd>
+            <dt>品牌</dt><dd th:utext="${brand.name}"></dd>
             <dt>型号</dt><dd>CLT-AL00</dd>
             <dt>入网型号</dt><dd>CLT-AL00</dd>
             <dt>上市年份</dt><dd>2018年</dd>

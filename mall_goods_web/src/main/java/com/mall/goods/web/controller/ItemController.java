@@ -27,8 +27,7 @@ public class ItemController {
 //         加载所需的数据
         Map<String, Object> modelMap = goodsWebService.loadModel(id);
         // 放入模型
-//        model.addAllAttributes(modelMap);
-
+        model.addAllAttributes(modelMap);
         return "item";
     }
 }

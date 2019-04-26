@@ -30,7 +30,6 @@ public class GoodsWebService {
 
     public Map<String, Object> loadModel(long spuId){
         try {
-            SpuDetailEntity body = goodsApi.querySpuDetailBySpuId(spuId).getBody();
             // 查询spu
             SpuEntity spu = goodsApi.querySpuById(spuId).getBody();
 
