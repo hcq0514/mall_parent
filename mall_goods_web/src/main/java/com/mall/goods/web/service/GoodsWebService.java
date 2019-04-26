@@ -1,10 +1,8 @@
 package com.mall.goods.web.service;
 
-
-import com.mall.goods.web.client.BrandClient;
-import com.mall.goods.web.client.CategoryClient;
-
-import com.mall.goods.web.client.GoodsClient;
+import com.mall.item.api.BrandApi;
+import com.mall.item.api.CategoryApi;
+import com.mall.item.api.GoodsApi;
 import com.mall.item.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,31 +18,30 @@ import java.util.Map;
 public class GoodsWebService {
 
     @Autowired
-    private GoodsClient goodsClient;
+    private GoodsApi goodsApi;
 
     @Autowired
-    private BrandClient brandClient;
+    private BrandApi brandApi;
 
     @Autowired
-    private CategoryClient categoryClient;
-
+    private CategoryApi categoryApi;
 
     private static final Logger logger = LoggerFactory.getLogger(GoodsWebService.class);
 
-    public Map<String, Object> loadModel(Long spuId) {
-
+    public Map<String, Object> loadModel(long spuId){
         try {
+            SpuDetailEntity body = goodsApi.querySpuDetailBySpuId(spuId).getBody();
             // 查询spu
-            SpuEntity spu = goodsClient.querySpuById(spuId).getBody();
+            SpuEntity spu = goodsApi.querySpuById(spuId).getBody();
 
             // 查询spu详情
-            SpuDetailEntity spuDetail = goodsClient.querySpuDetailBySpuId(spuId).getBody();
+            SpuDetailEntity spuDetail = goodsApi.querySpuDetailBySpuId(spuId).getBody();
 
             // 查询sku
-            List<SkuEntity> skus = goodsClient.querySkuBySpuId(spuId);
+            List<SkuEntity> skus = goodsApi.querySkuBySpuId(spuId);
 
             // 查询品牌
-            List<BrandEntity> brands = brandClient.queryBrandByIds(Arrays.asList(spu.getBrandId()));
+            List<BrandEntity> brands = brandApi.queryBrandByIds(Arrays.asList(spu.getBrandId()));
 
             // 查询分类
             List<CategoryEntity> categories = getCategories(spu);
@@ -77,7 +74,7 @@ public class GoodsWebService {
 
     private List<CategoryEntity> getCategories(SpuEntity spu) {
         try {
-            List<String> names = categoryClient.queryNameByIds(
+            List<String> names = categoryApi.queryNameByIds(
                     Arrays.asList(spu.getCid1(), spu.getCid2(), spu.getCid3())).getBody();
 
             CategoryEntity c1 = new CategoryEntity();
@@ -97,4 +94,5 @@ public class GoodsWebService {
         }
         return null;
     }
+
 }
