@@ -23,6 +23,40 @@ JWT | JWT登录支持 |
 LogStash | 日志收集 | 
 Lombok | 简化对象封装工具 | 
 
+### 第三方接口
+
+工具 |  说明 |  下载
+----|----|----
+阿里短信 | 短信发送
+阿里支付 | 支付宝支付
+微信支付 | 微信支付
+邮箱？ | 邮件发送
+
+### 微服务端口
+
+服务名 | 端口 | 说明 
+----|----|----
+spring-cloud-eureka | 7000 | 注册中心服务器
+spring-cloud-gateway | 7001 | 网关地址
+image-service（待修改） | 7005 | 图片微服务
+item-service | 7010 | 商品微服务
+user-service | 7011 | 用户微服务
+search-service | 7013 | 搜索微服务
+goods-web-service | 7102 | 商品详情页展示页面(前端展示)
+
+
+### 前端端口
+
+服务名 | 端口 | 说明 
+----|----|----
+index-web | 7100 | 商城主页
+manager-web | 7101 | 后台管理页面
+
+
+
+
+
+
 ### 开发环境
 
 工具 | 版本号 | 下载（没有地址的就是采用docker安装:https://hub.docker.com/）
