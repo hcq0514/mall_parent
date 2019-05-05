@@ -39,9 +39,6 @@ public class BrandController {
     @PostMapping("save")
     @ApiOperation(value = "创建品牌", notes = "创建品牌接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(
-                    name = "brand",
-                    value = "品牌对象，包含name:首字符，image:图片，letter:首字母"),
             @ApiImplicitParam(name = "cids", value = "品牌所属的种类数组"),
     })
     public ResponseEntity saveBrand(BrandEntity brand, @RequestParam("cids") List<Long> cids) {
@@ -49,6 +46,8 @@ public class BrandController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "根据品类获取品牌", notes = "根据品类获取品牌")
+    @ApiImplicitParam(name = "cid", value = "品类id")
     @GetMapping("cid/{cid}")
     public ResponseEntity queryBrandByCategoryId(@PathVariable("cid") long cid) {
         List<BrandEntity> brandEntities = brandService.queryBrandByCategoryId(cid);

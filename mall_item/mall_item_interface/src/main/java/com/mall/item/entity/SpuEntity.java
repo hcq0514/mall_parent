@@ -2,6 +2,9 @@ package com.mall.item.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -24,55 +27,37 @@ public class SpuEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(type = AUTO)
+    @ApiModelProperty(hidden = true)
     private Long id;
-    /**
-     * 标题
-     */
+
+    @ApiParam("标题")
     private String title;
 
-    /**
-     * 子标题
-     */
+    @ApiParam("子标题")
     private String subTitle;
 
-    /**
-     * 1级类目id
-     */
+    @ApiParam("1级类目id")
     private Long cid1;
 
-    /**
-     * 2级类目id
-     */
+    @ApiParam("2级类目id")
     private Long cid2;
 
-    /**
-     * 3级类目id
-     */
+    @ApiParam("3级类目id")
     private Long cid3;
 
-    /**
-     * 商品所属品牌id
-     */
+    @ApiParam("商品所属品牌id")
     private Long brandId;
 
-    /**
-     * 是否上架，0下架，1上架
-     */
+    @ApiParam("是否上架，0下架，1上架")
     private Boolean saleable;
 
-    /**
-     * 是否有效，0已删除，1有效
-     */
+    @ApiParam("是否有效，0已删除，1有效")
     private Boolean valid;
 
-    /**
-     * 添加时间
-     */
+    @ApiParam("添加时间")
     private LocalDateTime createTime;
 
-    /**
-     * 最后修改时间
-     */
+    @ApiParam("最后修改时间")
     private LocalDateTime lastUpdateTime;
 
 

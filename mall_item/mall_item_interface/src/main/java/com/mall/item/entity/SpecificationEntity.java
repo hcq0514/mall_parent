@@ -2,6 +2,7 @@ package com.mall.item.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
 import static com.baomidou.mybatisplus.annotation.IdType.NONE;
@@ -16,6 +17,7 @@ import static com.baomidou.mybatisplus.annotation.IdType.NONE;
 @TableName("mall_specification")
 public class SpecificationEntity {
     @TableId(type = NONE)
+    @ApiParam("类别ID")
     private Long categoryId;
     private String specifications;
 }
