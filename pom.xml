@@ -35,6 +35,7 @@
         <spring.cloud.version>Greenwich.SR1</spring.cloud.version>
         <fastjson.version>1.2.56</fastjson.version>
         <swagger2.version>2.9.2</swagger2.version>
+        <jjwt.version>0.10.5</jjwt.version>
     </properties>
 
     <dependencyManagement>
@@ -129,6 +130,24 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger2.version}</version>
+            </dependency>
+            <!--jwt-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.version}</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
 

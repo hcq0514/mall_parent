@@ -61,6 +61,4 @@ public class BrandController {
     List<BrandEntity> queryBrandByIds(@RequestParam("ids") List<Long> ids) {
         return (List<BrandEntity>) brandService.listByIds(ids);
     }
-
-    ;
 }
