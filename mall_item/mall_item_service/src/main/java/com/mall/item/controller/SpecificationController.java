@@ -1,16 +1,13 @@
-package com.mall.item.service.controller;
+package com.mall.item.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.mall.item.entity.BrandEntity;
 import com.mall.item.entity.SpecificationEntity;
-import com.mall.item.service.service.SpecificationService;
+import com.mall.item.service.SpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author hcq

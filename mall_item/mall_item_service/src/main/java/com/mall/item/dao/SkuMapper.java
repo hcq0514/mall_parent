@@ -1,4 +1,4 @@
-package com.mall.item.service.dao;
+package com.mall.item.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mall.item.entity.SkuEntity;

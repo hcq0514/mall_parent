@@ -1,4 +1,4 @@
-package com.mall.item.service.controller;
+package com.mall.item.controller;
 
 import com.mall.common.entity.HttpStatusCode;
 import com.mall.common.entity.Result;

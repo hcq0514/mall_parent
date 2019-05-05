@@ -1,4 +1,4 @@
-package com.mall.item.service.controller;
+package com.mall.item.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -7,7 +7,7 @@ import com.mall.item.entity.SkuEntity;
 import com.mall.item.entity.SpuDetailEntity;
 import com.mall.item.entity.SpuEntity;
 import com.mall.item.entity.bo.SpuBo;
-import com.mall.item.service.service.GoodsService;
+import com.mall.item.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

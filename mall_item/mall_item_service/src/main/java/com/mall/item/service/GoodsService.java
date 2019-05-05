@@ -1,4 +1,4 @@
-package com.mall.item.service.service;
+package com.mall.item.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.mall.item.entity.SkuEntity;

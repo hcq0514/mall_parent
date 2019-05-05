@@ -1,4 +1,4 @@
-package com.mall.item.service;
+package com.mall.item;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.springframework.boot.SpringApplication;

@@ -1,14 +1,12 @@
-package com.mall.item.service.service.impl;
+package com.mall.item.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.mall.item.dao.CategoryMapper;
 import com.mall.item.entity.CategoryEntity;
-import com.mall.item.service.dao.CategoryMapper;
-import com.mall.item.service.service.CategoryService;
+import com.mall.item.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 

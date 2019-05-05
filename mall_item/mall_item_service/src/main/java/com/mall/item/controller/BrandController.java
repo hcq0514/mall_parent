@@ -1,16 +1,16 @@
-package com.mall.item.service.controller;
+package com.mall.item.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mall.item.entity.BrandEntity;
-import com.mall.item.service.service.BrandService;
+import com.mall.item.service.BrandService;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -19,6 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("brand")
+@Api("品牌接口")
 public class BrandController {
 
     @Autowired
@@ -36,6 +37,13 @@ public class BrandController {
     }
 
     @PostMapping("save")
+    @ApiOperation(value = "创建品牌", notes = "创建品牌接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(
+                    name = "brand",
+                    value = "品牌对象，包含name:首字符，image:图片，letter:首字母"),
+            @ApiImplicitParam(name = "cids", value = "品牌所属的种类数组"),
+    })
     public ResponseEntity saveBrand(BrandEntity brand, @RequestParam("cids") List<Long> cids) {
         brandService.saveBrandAndCategoriesId(brand, cids);
         return new ResponseEntity(HttpStatus.CREATED);
@@ -45,13 +53,15 @@ public class BrandController {
     public ResponseEntity queryBrandByCategoryId(@PathVariable("cid") long cid) {
         List<BrandEntity> brandEntities = brandService.queryBrandByCategoryId(cid);
         if (brandEntities == null) {
-            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(brandEntities);
     }
 
     @GetMapping("list")
-    List<BrandEntity> queryBrandByIds(@RequestParam("ids") List<Long> ids){
-         return (List<BrandEntity>) brandService.listByIds(ids);
-    };
+    List<BrandEntity> queryBrandByIds(@RequestParam("ids") List<Long> ids) {
+        return (List<BrandEntity>) brandService.listByIds(ids);
+    }
+
+    ;
 }

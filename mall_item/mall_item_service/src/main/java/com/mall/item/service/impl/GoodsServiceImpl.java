@@ -1,11 +1,11 @@
-package com.mall.item.service.service.impl;
+package com.mall.item.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.mall.item.dao.*;
 import com.mall.item.entity.*;
 import com.mall.item.entity.bo.SpuBo;
-import com.mall.item.service.dao.*;
-import com.mall.item.service.service.GoodsService;
+import com.mall.item.service.GoodsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

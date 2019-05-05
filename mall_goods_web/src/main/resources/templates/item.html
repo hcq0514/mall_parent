@@ -152,7 +152,7 @@
 					<div class="sku-name">
 						<h4 th:utext="${spu.title}"></h4>
 					</div>
-					<div class="news"><span>推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</span></div>
+					<div class="news"><span th:utext="${spu.subTitle}"></span></div>
 					<div class="summary">
 						<div class="summary-wrap">
 							<div class="fl title"><i>价　　格</i></div>
@@ -452,12 +452,12 @@
 							</li>
 							<li>
 								<a href="#two" data-toggle="tab">
-									<span>规格与包装</span>
+									<span th:text="${spuDetail.packingList}">规格与包装</span>
 								</a>
 							</li>
 							<li>
 								<a href="#three" data-toggle="tab">
-									<span>售后保障</span>
+									<span th:text="${spuDetail.afterService}">售后保障</span>
 								</a>
 							</li>
 							<li>

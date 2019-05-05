@@ -1,4 +1,4 @@
-package com.mall.item.service.service;
+package com.mall.item.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.item.entity.CategoryEntity;

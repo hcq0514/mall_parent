@@ -1,10 +1,9 @@
-package com.mall.item.service.controller;
+package com.mall.item.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.mall.item.api.CategoryApi;
 import com.mall.item.entity.CategoryEntity;
-import com.mall.item.service.service.CategoryService;
+import com.mall.item.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
