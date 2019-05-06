@@ -1,6 +1,7 @@
 package com.mall.user;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.mall.common.util.JwtUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -19,6 +20,11 @@ public class UserApplication {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
+    }
+
+    @Bean
+    public JwtUtil initJwtUtil() {
+        return new JwtUtil();
     }
 
 }
