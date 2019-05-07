@@ -35,4 +35,6 @@ public interface GoodsService {
     List<SkuEntity> querySkuBySpuId(long spuId);
 
     SpuEntity querySpuById(Long id);
+
+    SkuEntity queryskuBySkuId(Long skuId);
 }

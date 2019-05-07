@@ -59,7 +59,7 @@ public class GoodsController {
     }
 
     @GetMapping("spu/detail/{spuDeailId}")
-    public ResponseEntity<SpuDetailEntity>querySpuDetailBySpuId (@PathVariable long spuDeailId) {
+    public ResponseEntity<SpuDetailEntity> querySpuDetailBySpuId(@PathVariable long spuDeailId) {
         SpuDetailEntity spuDetailEntity = goodsService.querySpuDetailBySpuId(spuDeailId);
         if (spuDetailEntity == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -73,17 +73,26 @@ public class GoodsController {
      * @return
      */
     @GetMapping("sku/list")
-    List<SkuEntity> querySkuBySpuId(@RequestParam("id") long spuId){
+    List<SkuEntity> querySkuBySpuId(@RequestParam("id") long spuId) {
         return goodsService.querySkuBySpuId(spuId);
-    };
+    }
 
     @GetMapping("spu/{id}")
-    public ResponseEntity<SpuEntity> querySpuById(@PathVariable("id") Long id){
+    public ResponseEntity<SpuEntity> querySpuById(@PathVariable("id") Long id) {
         SpuEntity spu = goodsService.querySpuById(id);
-        if(spu == null){
+        if (spu == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(spu);
+    }
+
+    @GetMapping("sku/{id}")
+    public ResponseEntity<SkuEntity> querySkuBySkuId(@PathVariable long id) {
+        SkuEntity skuEntity = goodsService.queryskuBySkuId(id);
+        if (skuEntity == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(skuEntity);
     }
 
 }

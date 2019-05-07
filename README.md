@@ -41,6 +41,7 @@ spring-cloud-gateway | 7001 | 网关地址
 image-service（待修改） | 7005 | 图片微服务
 item-service | 7010 | 商品微服务
 user-service | 7011 | 用户微服务
+cart-service | 7012 | 购物车微服务
 search-service | 7013 | 搜索微服务
 goods-web-service | 7102 | 商品详情页展示页面(前端展示)
 

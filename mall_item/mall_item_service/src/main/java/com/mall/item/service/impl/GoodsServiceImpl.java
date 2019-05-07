@@ -117,6 +117,9 @@ public class GoodsServiceImpl implements GoodsService {
         return spuMapper.selectById(id);
     }
 
-
+    @Override
+    public SkuEntity queryskuBySkuId(Long skuId) {
+        return skuMapper.selectById(skuId);
+    }
 
 }
