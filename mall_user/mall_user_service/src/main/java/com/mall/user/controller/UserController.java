@@ -1,5 +1,6 @@
 package com.mall.user.controller;
 
+import com.mall.common.util.JwtUtil;
 import com.mall.user.entity.UserEntity;
 import com.mall.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +36,10 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping("login")
-    public ResponseEntity<UserEntity> tempLogin() {
-        return ResponseEntity.ok(new UserEntity());
-    }
 
-    @GetMapping("sendVerifyCode")
-    public ResponseEntity<UserEntity> sendVerifyCode() {
-        userService.sendVerifyCode("13113051027");
-        return null;
+    @PostMapping("sendVerifyCode")
+    public void sendVerifyCode(String phone) {
+        userService.sendVerifyCode(phone);
     }
 
     /**
@@ -59,6 +55,21 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    /**
+     * 用户数据检查
+     * @param data
+     * @param type
+     * @return
+     */
+    @GetMapping("check/{data}/{type}")
+    public ResponseEntity<Boolean> checkUserData(@PathVariable("data") String data,@PathVariable(value = "type") Integer type){
+        Boolean result = userService.checkData(data,type);
+        if (result == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        return ResponseEntity.ok(result);
     }
 
 }

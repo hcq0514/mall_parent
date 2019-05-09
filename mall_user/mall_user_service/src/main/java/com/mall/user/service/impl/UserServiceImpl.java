@@ -39,13 +39,29 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     RedisTemplate redisTemplate;
 
     @Override
+    public Boolean checkData(String data, Integer type) {
+        UserEntity user = new UserEntity();
+        switch (type){
+            case 1 :
+                user.setUsername(data);
+                break;
+            case 2 :
+                user.setPhone(data);
+                break;
+            default:
+                return null;
+        }
+        return userMapper.selectCount(new QueryWrapper<>(user)) == 0;
+    }
+
+    @Override
     public UserEntity queryUser(String username, String password) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(username);
         UserEntity user = userMapper.selectOne(new QueryWrapper<>(userEntity));
         //检验用户是否存在
         if (user == null) {
-            return  null;
+            return null;
         }
         //检验密码是否正确
 //        if (user.getPassword())
@@ -58,6 +74,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         Map<String, String> map = new HashMap<>(3);
         map.put("code", verifyCode);
         map.put("phone", phone);
+        logger.info("写入短信注册验证码进mq队列，phone:[{}]，code:[{}]", phone, verifyCode);
         try {
             rabbitTemplate.convertAndSend(RabbitMQCode.USER_EXCHANGE, RabbitMQCode.USER_VERIFICATION_CODE_ROUTING_KEY, map);
             redisTemplate.opsForValue().set(RedisPrefix.VERIFY_CODE + phone, verifyCode, 5, TimeUnit.MINUTES);
