@@ -57,6 +57,15 @@ public class BrandController {
         return ResponseEntity.ok(brandEntities);
     }
 
+    @ApiOperation(value = "品牌删除")
+    @ApiImplicitParam(name = "id", value = "品牌id")
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteBrandById(@PathVariable("id") long id) {
+        boolean b = brandService.removeById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
     @GetMapping("list")
     List<BrandEntity> queryBrandByIds(@RequestParam("ids") List<Long> ids) {
         return (List<BrandEntity>) brandService.listByIds(ids);
