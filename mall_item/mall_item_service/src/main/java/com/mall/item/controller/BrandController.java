@@ -36,6 +36,16 @@ public class BrandController {
         return ResponseEntity.ok(page1);
     }
 
+    @GetMapping("bid/{bid}")
+    @ApiOperation(value = "查询品牌")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "bid", value = "品牌id"),
+    })
+    public ResponseEntity queryBrandById(@PathVariable("bid") long bid) {
+        BrandEntity brand = brandService.getById(bid);
+        return ResponseEntity.ok(brand);
+    }
+
     @PostMapping("save")
     @ApiOperation(value = "创建品牌", notes = "创建品牌接口")
     @ApiImplicitParams({

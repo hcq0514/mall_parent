@@ -13,4 +13,8 @@ import java.util.List;
 public interface CategoryService extends IService<CategoryEntity> {
 
     List<String> queryNameByIds(List<Long> ids);
+
+    List<CategoryEntity> queryByBrandId(Long brandId);
+
+    void updateNameById(Long id, String name);
 }

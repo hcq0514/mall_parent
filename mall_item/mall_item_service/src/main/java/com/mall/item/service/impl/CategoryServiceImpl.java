@@ -26,4 +26,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
         List<String> names = categoryMapper.selectBatchIds(ids).stream().map(x -> x.getName()).collect(Collectors.toList());
         return names;
     }
+
+    @Override
+    public List<CategoryEntity> queryByBrandId(Long brandId) {
+        return  categoryMapper.queryByBrandId(brandId);
+    }
+
+    @Override
+    public void updateNameById(Long id, String name) {
+        categoryMapper.updateNameById(id,name);
+    }
 }
