@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mall.item.entity.BrandEntity;
 import com.mall.item.service.BrandService;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +20,23 @@ import java.util.List;
  * @author hcq
  * @since 2019-04-09
  */
+@Api("品牌接口")
 @RestController
 @RequestMapping("brand")
-@Api("品牌接口")
 public class BrandController {
 
     @Autowired
     BrandService brandService;
 
     @GetMapping("page")
+    @ApiOperation(value = "查询品牌列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page", value = "当前页码"),
+            @ApiImplicitParam(name = "rows", value = "每页显示条数"),
+            @ApiImplicitParam(name = "sortBy", value = "排序字段"),
+            @ApiImplicitParam(name = "desc", value = "是否为从大到小排序"),
+            @ApiImplicitParam(name = "key", value = "搜索字段"),
+    })
     public ResponseEntity queryBrandByPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "rows", defaultValue = "5") Integer rows,
@@ -46,14 +57,32 @@ public class BrandController {
         return ResponseEntity.ok(brand);
     }
 
-    @PostMapping("save")
+    @PostMapping
     @ApiOperation(value = "创建品牌", notes = "创建品牌接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "cids", value = "品牌所属的种类数组"),
     })
     public ResponseEntity saveBrand(BrandEntity brand, @RequestParam("cids") List<Long> cids) {
         brandService.saveBrandAndCategoriesId(brand, cids);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping
+    @ApiOperation(value = "品牌信息修改")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "cids", value = "品牌所属的种类数组"),
+    })
+    public ResponseEntity update(BrandEntity brand, @RequestParam("cids") List<Long> cids) {
+        brandService.updateBrand(brand, cids);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @ApiOperation(value = "品牌删除")
+    @ApiImplicitParam(name = "bid", value = "品牌id")
+    @DeleteMapping()
+    public ResponseEntity deleteBrandById(@RequestParam("bid") long bid) {
+        brandService.removeBrand(bid);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ApiOperation(value = "根据品类获取品牌", notes = "根据品类获取品牌")
@@ -65,19 +94,5 @@ public class BrandController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(brandEntities);
-    }
-
-    @ApiOperation(value = "品牌删除")
-    @ApiImplicitParam(name = "id", value = "品牌id")
-    @DeleteMapping("{id}")
-    public ResponseEntity deleteBrandById(@PathVariable("id") long id) {
-        boolean b = brandService.removeById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-
-    }
-
-    @GetMapping("list")
-    List<BrandEntity> queryBrandByIds(@RequestParam("ids") List<Long> ids) {
-        return (List<BrandEntity>) brandService.listByIds(ids);
     }
 }

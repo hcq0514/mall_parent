@@ -2,10 +2,7 @@ package com.mall.item.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mall.item.entity.BrandEntity;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -34,4 +31,12 @@ public interface BrandMapper extends BaseMapper<BrandEntity> {
             "INNER JOIN mall_category_brand cb ON(b.id = cb.brand_id) " +
             "where cb.category_id = #{cid}")
     List<BrandEntity> selectBrandByCategoryId(long cid);
+
+    /**
+     * 删除掉此品牌对应的种类 mall_category_brand，用于更新
+     * @param brandId 品牌id
+     */
+
+    @Delete("delete from mall_category_brand where brand_id  = #{brandId}")
+    void  deleteBrandCategoriesByBrandId(@Param("brandId") Long brandId);
 }

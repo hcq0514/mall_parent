@@ -17,4 +17,8 @@ public interface BrandService extends IService<BrandEntity> {
     void saveBrandAndCategoriesId(BrandEntity brand, List<Long> cids);
 
     List<BrandEntity> queryBrandByCategoryId(long cid);
+
+    void updateBrand(BrandEntity brand, List<Long> cids);
+
+    void removeBrand(long id);
 }
