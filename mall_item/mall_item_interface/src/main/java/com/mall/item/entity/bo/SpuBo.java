@@ -18,7 +18,7 @@ public class SpuBo extends SpuEntity {
     /**
      *  品牌名称
      */
-    String BrandName;
+    String brandName;
 
     /**
      * 商品详情

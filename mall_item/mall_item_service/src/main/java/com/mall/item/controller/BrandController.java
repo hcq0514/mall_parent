@@ -85,6 +85,13 @@ public class BrandController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @ApiOperation(value = "品牌查询")
+    @GetMapping("{id}")
+    public ResponseEntity<BrandEntity> getById(@PathVariable("id") long id) {
+        BrandEntity brandEntity = brandService.getById(id);
+        return ResponseEntity.ok(brandEntity);
+    }
+
     @ApiOperation(value = "根据品类获取品牌", notes = "根据品类获取品牌")
     @ApiImplicitParam(name = "cid", value = "品类id")
     @GetMapping("cid/{cid}")

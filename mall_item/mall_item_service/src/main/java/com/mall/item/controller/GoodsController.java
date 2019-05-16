@@ -73,8 +73,12 @@ public class GoodsController {
      * @return
      */
     @GetMapping("sku/list")
-    List<SkuEntity> querySkuBySpuId(@RequestParam("id") long spuId) {
-        return goodsService.querySkuBySpuId(spuId);
+    public ResponseEntity<List<SkuEntity>> querySkuBySpuId(@RequestParam("id") long spuId) {
+        List<SkuEntity> skuEntities = goodsService.querySkuBySpuId(spuId);
+        if (skuEntities == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(skuEntities);
     }
 
     @GetMapping("spu/{id}")
